@@ -25,7 +25,21 @@ describe('reporter', function () {
       assert.lengthOf(reporter.scopeStack, 0);
       assert.isUndefined(reporter.currentScope);
     });
+
+    it('scope definitions present', function () {
+      assert.equal(reporter.scopeDefinitions.file.name, 'file');
+    });
   });
+
+  describe('add scope definitions', function () {
+    const reporter = sc.createReporter(scopes);
+
+    it('scope definitions present', function () {
+      reporter.addScopeDefinitions({ 'newScope' : { properties: { "newScopeProp" : {}}, format: ""} });
+      assert.equal(reporter.scopeDefinitions.newScope.name, 'newScope');
+    });
+
+    });
 
   describe('enter/leave scopes', function () {
     const reporter = sc.createReporter(scopes);

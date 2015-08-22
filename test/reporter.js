@@ -112,7 +112,7 @@ describe('reporter', function () {
   });
 
   describe('report', function () {
-    it('leave scope again', function () {
+    it('error', function () {
       const reporter = sc.createReporter(scopes);
       reporter.error('some error', 'file', {
         name: 'File'

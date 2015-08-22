@@ -23,20 +23,23 @@ describe('reporter', function () {
 
     it('scope stack empty', function () {
       assert.lengthOf(reporter.scopeStack, 0);
+      assert.isUndefined(reporter.currentScope);
     });
   });
 
-  describe('enter leave scopes', function () {
+  describe('enter/leave scopes', function () {
     const reporter = sc.createReporter(scopes);
 
-    it('can enter scope', function () {
+    it('enter scope', function () {
       reporter.enterScope('file', { name: 'aFile'});
       assert.lengthOf(reporter.scopeStack, 1);
+      assert.equal(reporter.currentScope.values.name, 'aFile');
     });
 
-    it('can leave scope', function () {
+    it('leave scope again', function () {
       reporter.leaveScope();
       assert.lengthOf(reporter.scopeStack, 0);
+      assert.isUndefined(reporter.currentScope);
     });
   });
 

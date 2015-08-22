@@ -77,6 +77,7 @@ describe('reporter', function () {
       });
       assert.lengthOf(reporter.scopeStack, 1);
       assert.equal(reporter.currentScope.values.name, 'aFile');
+      assert.equal(reporter.scope('file'), reporter.currentScope);
     });
 
     it('leave scope again', function () {
@@ -106,16 +107,21 @@ describe('reporter', function () {
         reporter.leaveScope('other');
         assert.lengthOf(reporter.scopeStack, 1);
       } catch (e) {
-        assert.equal(e,'Error: Leaving scope: expected to be in other but was in file scope');
+        assert.equal(e, 'Error: Leaving scope: expected to be in other but was in file scope');
       }
     });
   });
 
   describe('report', function () {
     it('error', function () {
-      const reporter = sc.createReporter(scopes);
+      const reporter = sc.createReporter(scopes, function (reporter) {
+        assert.lengthOf(reporter.scopeStack, 2);
+        assert.equal(reporter.scope('severity').values.severity, 'error');
+        assert.equal(reporter.scope('file').values.name, 'aFile');
+      });
+
       reporter.error('some error', 'file', {
-        name: 'File'
+        name: 'aFile'
       });
     });
   });

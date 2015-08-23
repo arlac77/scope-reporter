@@ -113,14 +113,52 @@ describe('reporter', function () {
   });
 
   describe('report', function () {
-    it('error', function () {
-      const reporter = sc.createReporter(scopes, function (reporter) {
+    function reporterWithAssertions(severity) {
+      return sc.createReporter(scopes, function (reporter) {
         assert.lengthOf(reporter.scopeStack, 2);
-        assert.equal(reporter.scope('severity').values.severity, 'error');
+        assert.equal(reporter.scope('severity').values.severity, severity);
         assert.equal(reporter.scope('file').values.name, 'aFile');
       });
+    }
 
+    it('trace', function () {
+      const reporter = reporterWithAssertions('trace');
+      reporter.trace('some error', 'file', {
+        name: 'aFile'
+      });
+    });
+
+    it('debug', function () {
+      const reporter = reporterWithAssertions('debug');
+      reporter.debug('some error', 'file', {
+        name: 'aFile'
+      });
+    });
+
+    it('info', function () {
+      const reporter = reporterWithAssertions('info');
+      reporter.info('some error', 'file', {
+        name: 'aFile'
+      });
+    });
+
+    it('warn', function () {
+      const reporter = reporterWithAssertions('warn');
+      reporter.warn('some error', 'file', {
+        name: 'aFile'
+      });
+    });
+
+    it('error', function () {
+      const reporter = reporterWithAssertions('error');
       reporter.error('some error', 'file', {
+        name: 'aFile'
+      });
+    });
+
+    it('fatal', function () {
+      const reporter = reporterWithAssertions('fatal');
+      reporter.fatal('some error', 'file', {
         name: 'aFile'
       });
     });

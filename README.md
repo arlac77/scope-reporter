@@ -25,12 +25,19 @@ const scopes = {
       name: {}
     },
     format: "file: ${name}"
+  },
+  'line': {
+    properties: {
+      line: {}
+    },
+    format: "line: ${line}"
   }
 };
 
 const sr = sc.createReporter(scopes);
 
 sr.enterScope('file', 'theFileName');
+
 
 sr.leaveScope( /* 'file' */);
 

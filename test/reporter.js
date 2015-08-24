@@ -71,6 +71,10 @@ describe('reporter', function () {
   describe('enter/leave scopes', function () {
     const reporter = sc.createReporter(scopes);
 
+    it('default undefined scope', function () {
+      assert.isUndefined(reporter.currentScope);
+    });
+
     it('enter scope single scalar', function () {
       const reporter = sc.createReporter(scopes);
       const newScope = reporter.enterScope('file', 'aFile');
@@ -96,6 +100,20 @@ describe('reporter', function () {
       assert.isUndefined(reporter.currentScope);
       assert.equal(oldScope.name, 'file');
     });
+  });
+
+  describe('find scopes', function () {
+    const reporter = sc.createReporter(scopes);
+    reporter.enterScope('file', 'aFile');
+
+    it('with name', function () {
+      assert.equal(reporter.scope('file').name, 'file');
+    });
+
+    it('with invalid name', function () {
+      assert.isUndefined(reporter.scope('no_present'));
+    });
+
   });
 
   describe('enter/leave scopes guarded', function () {
@@ -124,53 +142,89 @@ describe('reporter', function () {
   });
 
   describe('report', function () {
-    function reporterWithAssertions(severity) {
-      return sc.createReporter(scopes, function (reporter) {
-        assert.lengthOf(reporter.scopeStack, 2);
-        assert.equal(reporter.scope('severity').values.severity, severity);
-        assert.equal(reporter.scope('file').values.name, 'aFile');
-      });
-    }
+    describe('logging adaptor', function () {
+      function reporterWithAssertions(severity) {
+        function myAsserter(severity) {
+          return function (message) {
+            assert.include(message, 'some error');
+          };
+        }
 
-    it('trace', function () {
-      const reporter = reporterWithAssertions('trace');
-      reporter.trace('some error', 'file', {
-        name: 'aFile'
+        const logger = {
+          trace: myAsserter('trace'),
+          debug: myAsserter('debug'),
+          info: myAsserter('info'),
+          warn: myAsserter('warn'),
+          error: myAsserter('error'),
+          fatal: myAsserter('fatal')
+        };
+        return sc.createReporter(scopes, sc.createLoggingAdapter(logger));
+      }
+
+      it('trace', function () {
+        const reporter = reporterWithAssertions('trace');
+        reporter.trace('some error', 'file', 'aFile');
+      });
+      it('debug', function () {
+        const reporter = reporterWithAssertions('debug');
+        reporter.debug('some error', 'file', 'aFile');
+      });
+      it('info', function () {
+        const reporter = reporterWithAssertions('info');
+        reporter.info('some error', 'file', 'aFile');
+      });
+      it('warn', function () {
+        const reporter = reporterWithAssertions('warn');
+        reporter.warn('some error', 'file', 'aFile');
+      });
+      it('error', function () {
+        const reporter = reporterWithAssertions('error');
+        reporter.error('some error', 'file', 'aFile');
+      });
+      it('fatal', function () {
+        const reporter = reporterWithAssertions('fatal');
+        reporter.fatal('some error', 'file', 'aFile');
       });
     });
 
-    it('debug', function () {
-      const reporter = reporterWithAssertions('debug');
-      reporter.debug('some error', 'file', {
-        name: 'aFile'
-      });
-    });
+    describe('internal model', function () {
+      function reporterWithAssertions(severity) {
+        return sc.createReporter(scopes, function (reporter) {
+          assert.lengthOf(reporter.scopeStack, 2);
+          assert.equal(reporter.scope('severity').values.severity, severity);
+          assert.equal(reporter.scope('severity').values.message, 'some error');
+          assert.equal(reporter.scope('file').values.name, 'aFile');
+        });
+      }
 
-    it('info', function () {
-      const reporter = reporterWithAssertions('info');
-      reporter.info('some error', 'file', {
-        name: 'aFile'
+      it('trace', function () {
+        const reporter = reporterWithAssertions('trace');
+        reporter.trace('some error', 'file', 'aFile');
       });
-    });
 
-    it('warn', function () {
-      const reporter = reporterWithAssertions('warn');
-      reporter.warn('some error', 'file', {
-        name: 'aFile'
+      it('debug', function () {
+        const reporter = reporterWithAssertions('debug');
+        reporter.debug('some error', 'file', 'aFile');
       });
-    });
 
-    it('error', function () {
-      const reporter = reporterWithAssertions('error');
-      reporter.error('some error', 'file', {
-        name: 'aFile'
+      it('info', function () {
+        const reporter = reporterWithAssertions('info');
+        reporter.info('some error', 'file', 'aFile');
       });
-    });
 
-    it('fatal', function () {
-      const reporter = reporterWithAssertions('fatal');
-      reporter.fatal('some error', 'file', {
-        name: 'aFile'
+      it('warn', function () {
+        const reporter = reporterWithAssertions('warn');
+        reporter.warn('some error', 'file', 'aFile');
+      });
+
+      it('error', function () {
+        const reporter = reporterWithAssertions('error');
+        reporter.error('some error', 'file', 'aFile');
+      });
+
+      it('fatal', function () {
+        const reporter = reporterWithAssertions('fatal');
+        reporter.fatal('some error', 'file', 'aFile');
       });
     });
   });

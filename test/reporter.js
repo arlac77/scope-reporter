@@ -91,9 +91,10 @@ describe('reporter', function () {
     });
 
     it('leave scope again', function () {
-      reporter.leaveScope();
+      const oldScope = reporter.leaveScope();
       assert.lengthOf(reporter.scopeStack, 0);
       assert.isUndefined(reporter.currentScope);
+      assert.equal(oldScope.name, 'file');
     });
   });
 

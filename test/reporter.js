@@ -71,6 +71,14 @@ describe('reporter', function () {
   describe('enter/leave scopes', function () {
     const reporter = sc.createReporter(scopes);
 
+    it('enter scope single scalar', function () {
+      const reporter = sc.createReporter(scopes);
+      reporter.enterScope('file', 'aFile');
+      assert.lengthOf(reporter.scopeStack, 1);
+      assert.equal(reporter.currentScope.values.name, 'aFile');
+      assert.equal(reporter.scope('file'), reporter.currentScope);
+    });
+
     it('enter scope', function () {
       reporter.enterScope('file', {
         name: 'aFile'

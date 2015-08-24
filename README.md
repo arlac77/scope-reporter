@@ -19,6 +19,20 @@ Expands expressions in json objects
 ```js
 var sc = require('scope-reporter');
 
+const scopes = {
+  'file': {
+    properties: {
+      name: {}
+    },
+    format: "file: ${name}"
+  }
+};
+
+const sr = sc.createReporter(scopes);
+
+sr.enterScope('file', 'theFileName');
+
+sr.leaveScope( /* 'file' */);
 
 ```
 

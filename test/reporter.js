@@ -181,7 +181,6 @@ describe('reporter', function () {
         const reporter = reporterWithAssertions('trace');
         reporter.trace('some error', 'file', 'aFile');
       });
-
     });
 
     describe('logging adaptor', function () {
@@ -239,6 +238,12 @@ describe('reporter', function () {
           assert.equal(reporter.scope('file').values.name, 'aFile');
         });
       }
+
+      if('exception', function () {
+        const reporter = reporterWithAssertions('exception');
+        reporter.enterScope('file', 'aFile');
+        reporter.exception(new Error('some exception'));
+        });
 
       it('trace', function () {
         const reporter = reporterWithAssertions('trace');

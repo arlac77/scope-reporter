@@ -22,6 +22,8 @@ describe('scope', function () {
       assert.deepEqual(fileScopeDef.properties, {
         'name': {}
       });
+
+      assert.equal(fileScopeDef.toString(), 'file');
     });
   });
 

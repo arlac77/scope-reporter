@@ -1,4 +1,4 @@
-/* global describe, it, xit */
+/* global describe, it, xit, console */
 /* jslint node: true, esnext: true */
 
 "use strict";
@@ -141,7 +141,49 @@ describe('reporter', function () {
     });
   });
 
+  describe('toString toJSON', function () {
+    const reporter = sc.createReporter(scopes);
+    reporter.enterScope('file', 'aFile');
+    reporter.enterScope('error', 'something went wrong');
+    assert.include(reporter.toString(), 'aFile');
+
+    //console.log(JSON.stringify(reporter.toJSON()));
+
+    assert.deepEqual(reporter.toJSON(), {
+      "scopes": [{
+        "name": "file",
+        "properties": {
+          "name": "aFile"
+        }
+      }, {
+        "name": "error",
+        "properties": {
+          "error": "something went wrong"
+        }
+      }]
+    });
+  });
+
   describe('report', function () {
+    describe('console adaptor', function () {
+      const myConsole = {
+        log(message) {
+          assert.include(message, 'some error');
+          assert.include(message, 'aFile');
+        }
+      };
+
+      function reporterWithAssertions(severity) {
+        return sc.createReporter(scopes, sc.createConsoleAdapter(myConsole));
+      }
+
+      it('trace', function () {
+        const reporter = reporterWithAssertions('trace');
+        reporter.trace('some error', 'file', 'aFile');
+      });
+
+    });
+
     describe('logging adaptor', function () {
       function reporterWithAssertions(severity) {
         function myAsserter(severity) {

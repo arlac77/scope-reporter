@@ -147,6 +147,7 @@ describe('reporter', function () {
         function myAsserter(severity) {
           return function (message) {
             assert.include(message, 'some error');
+            assert.include(message, 'aFile');
           };
         }
 

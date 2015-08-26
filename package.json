@@ -15,7 +15,7 @@
     "url": "https://github.com/arlac77/scope-reporter.git"
   },
   "engines": {
-    "iojs": ">=2.0.0"
+    "iojs": ">=2.5.0"
   },
   "release": {
     "verifyRelease": "cracks"

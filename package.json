@@ -40,6 +40,6 @@
   },
   "homepage": "https://github.com/arlac77/scope-reporter#readme",
   "dependencies": {
-    "expression-expander": "^1.1.1"
+    "expression-expander": "^1.2.0"
   }
 }

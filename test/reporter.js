@@ -239,10 +239,10 @@ describe('reporter', function () {
         });
       }
 
-      if('exception', function () {
-        const reporter = reporterWithAssertions('exception');
-        reporter.enterScope('file', 'aFile');
-        reporter.exception(new Error('some exception'));
+      if ('exception', function () {
+          const reporter = reporterWithAssertions('exception');
+          reporter.enterScope('file', 'aFile');
+          reporter.exception(new Error('some exception'));
         });
 
       it('trace', function () {

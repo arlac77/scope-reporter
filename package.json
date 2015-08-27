@@ -18,7 +18,7 @@
     "iojs": ">=2.5.0"
   },
   "release": {
-    "verifyRelease": "cracks"
+    "debug": false
   },
   "keywords": [
     "scope",

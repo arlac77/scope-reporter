@@ -9,9 +9,13 @@
 [![docs](http://inch-ci.org/github/arlac77/scope-reporter.svg?branch=master)](http://inch-ci.org/github/arlac77/scope-reporter)
 
 Scope Reporter
--------------------
+--------------
 
-Expands expressions in json objects
+Keeps trac of scope identifiers during processing.
+Can be used for better logging/reporting.
+The position (path to) of the issue/event is agregated while the
+control flow reachs the point of the occurence.
+
 
 # example
 
@@ -23,13 +27,13 @@ var sc = require('scope-reporter');
 const scopes = {
   'file': {
     properties: {
-      name: {}
+      name: { type: "string" }
     },
     format: "file: ${name}"
   },
   'line': {
     properties: {
-      line: {}
+      line: { type: "number" }
     },
     format: "line: ${line}"
   }
@@ -37,10 +41,13 @@ const scopes = {
 
 const sr = sc.createReporter(scopes);
 
-sr.enterScope('file', 'theFileName');
+sr.enterScope('file', 'theFileName');  // enter the file scope
+
+sr.enterScope('line', 1); // file & line scope
 
 
-sr.leaveScope( /* 'file' */);
+sr.leaveScope( /* 'line' */);
+sr.leaveScope( /* 'file' */); // leave the file scope again
 
 ```
 

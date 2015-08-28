@@ -1,6 +1,5 @@
 {
   "name": "scope-reporter",
-  "version": "0.0.0-semantically-released",
   "description": "traks scope identifiers during processing",
   "main": "lib/scopeReporter.js",
   "scripts": {

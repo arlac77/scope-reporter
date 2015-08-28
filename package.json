@@ -25,6 +25,7 @@
   ],
   "devDependencies": {
     "chai": "3.2.0",
+    "coveralls": "^2.11.4",
     "cracks": "^3.0.2",
     "istanbul-harmony": "0.3.16",
     "jsdoc": "^3.3.2",

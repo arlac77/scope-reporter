@@ -57,6 +57,8 @@ Output
 
 ```
 
+jsdoc can be found [here](http://arlac77.github.io/modules/scope-reporter/doc/).
+
 # install
 
 With [npm](http://npmjs.org) do:

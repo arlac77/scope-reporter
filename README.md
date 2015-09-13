@@ -8,6 +8,7 @@
 [![Dependency Status](https://david-dm.org/arlac77/scope-reporter.svg)](https://david-dm.org/arlac77/scope-reporter)
 [![devDependency Status](https://david-dm.org/arlac77/scope-reporter/dev-status.svg)](https://david-dm.org/arlac77/scope-reporter#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/scope-reporter.svg?branch=master)](http://inch-ci.org/github/arlac77/scope-reporter)
+[![downloads](http://img.shields.io/npm/dm/scope-reporter?style=flat-square)](https://npmjs.org/package/scope-reporter)
 
 Scope Reporter
 --------------

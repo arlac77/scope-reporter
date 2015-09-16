@@ -31,7 +31,7 @@
     "jsdoc": "^3.3.2",
     "mocha": "^2.3.2",
     "mocha-html-reporter": "^0.0.1",
-    "semantic-release": "^6.0.1"
+    "semantic-release": "^6.0.2"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",
   "license": "BSD-2-Clause",

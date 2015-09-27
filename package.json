@@ -29,7 +29,7 @@
     "istanbul-harmony": "0.3.16",
     "jsdoc": "3.3.3",
     "mocha": "2.3.3",
-    "semantic-release": "6.0.3"
+    "semantic-release": "4.3.5"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",
   "license": "BSD-2-Clause",

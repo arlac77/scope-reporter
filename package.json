@@ -6,7 +6,6 @@
     "cover": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports test",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
     "test": "mocha --harmony test/*.js",
-    "ci-test-report": "mocha --harmony --reporter mocha-html-reporter test/*.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -14,7 +13,7 @@
     "url": "https://github.com/arlac77/scope-reporter.git"
   },
   "engines": {
-    "iojs": ">=2.5.0"
+    "node": ">=4.0.0"
   },
   "release": {
     "debug": false
@@ -30,7 +29,6 @@
     "istanbul-harmony": "0.3.16",
     "jsdoc": "3.3.3",
     "mocha": "2.3.3",
-    "mocha-html-reporter": "0.0.1",
     "semantic-release": "6.0.3"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",

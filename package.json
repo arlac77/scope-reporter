@@ -28,7 +28,7 @@
     "cracks": "3.1.1",
     "istanbul": "0.4.0",
     "jsdoc": "3.3.3",
-    "mocha": "2.3.3",
+    "mocha": "2.3.4",
     "semantic-release": "6.0.3"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",

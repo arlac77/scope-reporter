@@ -100,6 +100,14 @@ describe('reporter', function () {
       assert.isUndefined(reporter.currentScope);
       assert.equal(oldScope.name, 'file');
     });
+
+    it('clear scope', function () {
+      const reporter = sc.createReporter(scopes);
+      const newScope = reporter.enterScope('file', 'aFile');
+      reporter.clearScopes();
+      assert.lengthOf(reporter.scopeStack, 0);
+      assert.isUndefined(reporter.currentScope);
+    });
   });
 
   describe('find scopes', function () {

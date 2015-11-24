@@ -237,6 +237,31 @@ describe('reporter', function () {
       });
     });
 
+    describe('logging adaptor without fatal', function () {
+      function reporterWithAssertions(severity) {
+        function myAsserter(severity) {
+          return function (message) {
+            assert.include(message, 'some error');
+            assert.include(message, 'aFile');
+          };
+        }
+
+        const logger = {
+          trace: myAsserter('trace'),
+          debug: myAsserter('debug'),
+          info: myAsserter('info'),
+          warn: myAsserter('warn'),
+          error: myAsserter('error'),
+        };
+        return sc.createReporter(scopes, sc.createLoggingAdapter(logger));
+      }
+
+      it('fatal', function () {
+        const reporter = reporterWithAssertions('fatal');
+        reporter.fatal('some error', 'file', 'aFile');
+      });
+    });
+
     describe('internal model', function () {
       function reporterWithAssertions(severity) {
         return sc.createReporter(scopes, function (reporter) {

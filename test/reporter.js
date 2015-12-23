@@ -3,13 +3,11 @@
 
 "use strict";
 
-const chai = require('chai');
-const assert = chai.assert;
-const expect = chai.expect;
-const should = chai.should();
-
-const sc = require('../lib/scopeReporter.js');
-
+const chai = require('chai'),
+  assert = chai.assert,
+  expect = chai.expect,
+  should = chai.should(),
+  sc = require('../lib/scopeReporter.js');
 
 const scopes = {
   'file': {
@@ -173,6 +171,21 @@ describe('reporter', function () {
   });
 
   describe('report', function () {
+    describe('set adapter late', function () {
+      function reporterWithAssertions(severity) {
+        const r = sc.createReporter(scopes);
+        r.adater = function (sr) {
+          console.log("******** ");
+        };
+        return r;
+      }
+
+      it('trace', function () {
+        const reporter = reporterWithAssertions('trace');
+        reporter.trace('some error', 'file', 'aFile');
+      });
+    });
+
     describe('console adaptor', function () {
       const myConsole = {
         log(message) {

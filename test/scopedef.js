@@ -3,12 +3,11 @@
 
 "use strict";
 
-const chai = require('chai');
-const assert = chai.assert;
-const expect = chai.expect;
-const should = chai.should();
-
-const sc = require('../lib/scopeReporter.js');
+const chai = require('chai'),
+  assert = chai.assert,
+  expect = chai.expect,
+  should = chai.should(),
+  sc = require('../lib/scopeReporter.js');
 
 describe('scope', function () {
   describe('create single', function () {

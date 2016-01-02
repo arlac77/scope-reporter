@@ -2,6 +2,7 @@
 [![npm](https://img.shields.io/npm/v/scope-reporter.svg)](https://www.npmjs.com/package/scope-reporter)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/arlac77/scope-reporter)
 [![Build Status](https://secure.travis-ci.org/arlac77/scope-reporter.png)](http://travis-ci.org/arlac77/scope-reporter)
+[![bithound](https://www.bithound.io/github/arlac77/scope-reporter/badges/score.svg)](https://www.bithound.io/github/arlac77/scope-reporter)
 [![Coverage Status](https://coveralls.io/repos/arlac77/scope-reporter/badge.svg?branch=master&service=github)](https://coveralls.io/github/arlac77/scope-reporter?branch=master)
 [![Test Coverage](https://codeclimate.com/github/arlac77/scope-reporter/badges/coverage.svg)](https://codeclimate.com/github/arlac77/scope-reporter/coverage)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/scope-reporter.svg?style=flat-square)](https://github.com/arlac77/scope-reporter/issues)
@@ -13,17 +14,17 @@
 Scope Reporter
 --------------
 
-Keeps trac of scope identifiers during processing.
+Keeps track of scope identifiers during processing.
 Can be used for better logging/reporting.
-The position (path to) of the issue/event is agregated while the
-control flow reachs the point of the occurence.
+The position (path to) of the issue/event is aggregated while the
+control flow reaches the point of the occurence.
 
 
 # example
 
 ## file.js
 
-```js
+```javascript
 var sc = require('scope-reporter');
 
 const scopes = {
@@ -65,7 +66,7 @@ jsdoc can be found [here](http://arlac77.github.io/modules/scope-reporter/doc/).
 
 With [npm](http://npmjs.org) do:
 
-```
+```shell
 npm install scope-reporter
 ```
 

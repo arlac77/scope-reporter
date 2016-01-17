@@ -3,7 +3,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/arlac77/scope-reporter)
 [![Build Status](https://secure.travis-ci.org/arlac77/scope-reporter.png)](http://travis-ci.org/arlac77/scope-reporter)
 [![bithound](https://www.bithound.io/github/arlac77/scope-reporter/badges/score.svg)](https://www.bithound.io/github/arlac77/scope-reporter)
-[![Coverage Status](https://coveralls.io/repos/arlac77/scope-reporter/badge.svg?branch=master&service=github)](https://coveralls.io/github/arlac77/scope-reporter?branch=master)
+[![codecov.io](http://codecov.io/github/arlac77/scope-reporter/coverage.svg?branch=master)](http://codecov.io/github/arlac77/scope-reporter?branch=master)
 [![Test Coverage](https://codeclimate.com/github/arlac77/scope-reporter/badges/coverage.svg)](https://codeclimate.com/github/arlac77/scope-reporter/coverage)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/scope-reporter.svg?style=flat-square)](https://github.com/arlac77/scope-reporter/issues)
 [![Dependency Status](https://david-dm.org/arlac77/scope-reporter.svg)](https://david-dm.org/arlac77/scope-reporter)

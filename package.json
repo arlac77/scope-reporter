@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "cz-conventional-changelog": "^1.1.6",
     "cracks": "^3.1.2",
+    "cz-conventional-changelog": "^1.1.6",
     "istanbul": "0.4.3",
     "jsdoc": "3.4.0",
     "mocha": "2.5.3",
-    "semantic-release": "6.0.3"
+    "semantic-release": "6.3.0"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",
   "license": "BSD-2-Clause",

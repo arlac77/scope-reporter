@@ -1,11 +1,14 @@
 {
   "name": "scope-reporter",
   "description": "traks scope identifiers during processing",
-  "main": "lib/scopeReporter.js",
+  "main": "dist/ScopeReporter.js",
+  "jsnext:main": "src/ScopeReporter.js",
+  "module": "src/ScopeReporter.js",
   "scripts": {
-    "cover": "node --harmony ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests",
+    "cover": "npm run build && node --harmony ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
-    "test": "mocha --harmony tests/*.js",
+    "test": "npm run build && mocha --harmony tests/*.js",
+    "build": "./node_modules/rollup/bin/rollup --format=cjs --output=dist/ScopeReporter.js -- src/ScopeReporter.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -13,13 +16,13 @@
     "url": "https://github.com/arlac77/scope-reporter.git"
   },
   "engines": {
-    "node": ">=6.2"
+    "node": ">=6.5"
   },
   "keywords": [
     "scope",
     "tracking"
   ],
-  "release": {
+  "_release": {
     "verifyRelease": "cracks"
   },
   "devDependencies": {
@@ -29,6 +32,7 @@
     "istanbul": "0.4.5",
     "jsdoc": "3.4.1",
     "mocha": "3.0.2",
+    "rollup": "^0.36.0",
     "semantic-release": "6.3.0"
   },
   "author": "Markus Felten <markus.felten@gmx.de>",

@@ -1,13 +1,13 @@
 /* global describe, it, xit */
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
 const chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
   should = chai.should(),
-  sc = require('../lib/scopeReporter.js');
+  sc = require('../dist/ScopeReporter.js');
 
 describe('scope', function () {
   describe('create single', function () {
@@ -41,8 +41,6 @@ describe('scope', function () {
         format: "line: ${number}"
       }
     });
-    it('present', function () {
-      assert.lengthOf(scopeDefs, 2);
-    });
+    it('present', () => assert.lengthOf(scopeDefs, 2));
   });
 });

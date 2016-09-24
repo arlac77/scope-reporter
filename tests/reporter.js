@@ -1,13 +1,13 @@
 /* global describe, it, xit, console */
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
 const chai = require('chai'),
   assert = chai.assert,
   expect = chai.expect,
   should = chai.should(),
-  sc = require('../lib/scopeReporter.js');
+  sc = require('../dist/ScopeReporter.js');
 
 const scopes = {
   'file': {

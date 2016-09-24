@@ -1,6 +1,6 @@
 /* jslint node: true, esnext: true */
 
-"use strict";
+'use strict';
 
 const expander = require('expression-expander'),
   util = require('util');
@@ -33,7 +33,7 @@ const rootScopeDefinition = {
  * Creates several scope definition from a given json hash.
  * @param scopes
  */
-exports.createScopeDefinitions = function (scopes) {
+function createScopeDefinitions(scopes) {
   const createdScopes = [];
 
   for (const s in scopes) {
@@ -42,7 +42,7 @@ exports.createScopeDefinitions = function (scopes) {
   }
 
   return createdScopes;
-};
+}
 
 /**
  * Creates a scope definition
@@ -50,7 +50,7 @@ exports.createScopeDefinitions = function (scopes) {
  * @param properties describung properties for the scope
  * @param format format string for the scope properties
  */
-exports.createScopeDefinition = function (name, properties, format) {
+function createScopeDefinition(name, properties, format) {
   return Object.create(rootScopeDefinition, {
     name: {
       value: name
@@ -62,7 +62,7 @@ exports.createScopeDefinition = function (name, properties, format) {
       value: format
     }
   });
-};
+}
 
 /**
  * Commonly used scopes
@@ -72,31 +72,31 @@ const commonScopes = {
   error: {
     properties: {
       error: {
-        type: "string"
+        type: 'string'
       }
     },
-    format: "${error}"
+    format: '${error}'
   },
   exception: {
     /* used for exceptions */
     properties: {
       exception: {
-        type: "Error"
+        type: 'Error'
       }
     },
-    format: "${exception}"
+    format: '${exception}'
   },
   severity: {
     /* used for logging entries */
     properties: {
       severity: {
-        type: "string"
+        type: 'string'
       },
       message: {
-        type: "string"
+        type: 'string'
       }
     },
-    format: "${message}"
+    format: '${message}'
   }
 };
 
@@ -105,19 +105,19 @@ const commonScopes = {
  * @param aConsole console object may be undefined for the default console
  * @return the newly created adaptor
  */
-exports.createConsoleAdapter = function (aConsole = console) {
+function createConsoleAdapter(aConsole = console) {
   return function (reporter) {
     const message = reporter.scopeStack.map(scope => `${scope.name}: ${scope.valueString()}`).join(',');
     aConsole.log(message);
   };
-};
+}
 
 /**
  * Creates a reporting adaptor for logging api.
  * @param logger target logger
  * @return the newly created adaptor
  */
-exports.createLoggingAdapter = function (logger) {
+function createLoggingAdapter(logger) {
   return function loggerReport(reporter) {
     const message = reporter.scopeStack.map(scope => `${scope.name}: ${scope.valueString()}`).join(',');
 
@@ -146,9 +146,9 @@ exports.createLoggingAdapter = function (logger) {
         break;
     }
   };
-};
+}
 
-exports.nullAdapter = function () {};
+function nullAdapter() {}
 
 /**
  * Creates a new scope reporter.
@@ -156,7 +156,7 @@ exports.nullAdapter = function () {};
  * @param reportAdapter
  * @return {ScopeReporter} newly created scope reporter
  */
-exports.createReporter = function (scopeDefinitionsRaw, reportAdapter = exports.createConsoleAdapter()) {
+function createReporter(scopeDefinitionsRaw, reportAdapter = exports.createConsoleAdapter()) {
   const scopeDefinitions = {};
   const scopeStack = [];
 
@@ -339,4 +339,13 @@ exports.createReporter = function (scopeDefinitionsRaw, reportAdapter = exports.
         }
     }
   });
+}
+
+export {
+  createScopeDefinitions,
+  createScopeDefinition,
+  createReporter,
+  nullAdapter,
+  createConsoleAdapter,
+  createLoggingAdapter
 };

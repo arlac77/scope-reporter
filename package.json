@@ -22,7 +22,7 @@
     "scope",
     "tracking"
   ],
-  "_release": {
+  "release": {
     "verifyRelease": "cracks"
   },
   "devDependencies": {

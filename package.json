@@ -10,7 +10,7 @@
     "test": "npm run build && mocha tests/*_test.js && markdown-doctest",
     "build": "./node_modules/rollup/bin/rollup --format=cjs --output=dist/ScopeReporter.js -- src/ScopeReporter.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "docs": "jsdoc2md -l off -t README.hbs -f src/ScopeReporter.js > README.md"
+    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/ScopeReporter.js > README.md"
   },
   "repository": {
     "type": "git",

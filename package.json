@@ -42,7 +42,7 @@
   },
   "homepage": "https://github.com/arlac77/scope-reporter#readme",
   "dependencies": {
-    "expression-expander": "^5.2.2"
+    "expression-expander": "^5.2.3"
   },
   "config": {
     "commitizen": {

@@ -2,7 +2,6 @@
   "name": "scope-reporter",
   "description": "traks scope identifiers during processing",
   "main": "dist/ScopeReporter.js",
-  "jsnext:main": "src/ScopeReporter.js",
   "module": "src/ScopeReporter.js",
   "scripts": {
     "cover": "npm run build && ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*_test.js",
@@ -52,10 +51,8 @@
     }
   },
   "version": "0.0.0-semantic-release",
-  "contributors": [
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ]
+  "contributors": [{
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }]
 }

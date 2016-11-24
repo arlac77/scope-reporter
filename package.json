@@ -4,10 +4,10 @@
   "main": "dist/ScopeReporter.js",
   "module": "src/ScopeReporter.js",
   "scripts": {
-    "cover": "npm run build && ./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*_test.js",
-    "test": "npm run build && mocha tests/*_test.js && markdown-doctest",
-    "build": "./node_modules/rollup/bin/rollup --output=dist/ScopeReporter.js -c -- src/ScopeReporter.js",
-    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/ScopeReporter.js > README.md",
+    "cover": "npm run build && node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -u exports tests/*_test.js",
+    "test": "npm run build && node_modules/.bin/mocha tests/*_test.js && markdown-doctest",
+    "build": "node_modules/rollup/bin/rollup --output=dist/ScopeReporter.js -c -- src/ScopeReporter.js",
+    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js > README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -30,7 +30,7 @@
     "cz-conventional-changelog": "^1.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
-    "semantic-release": "^6.3.2",
+    "semantic-release": "^6.3.3",
     "jsdoc-to-markdown": "^2.0.1",
     "markdown-doctest": "^0.9.0",
     "rollup": "^0.36.4",
@@ -51,8 +51,10 @@
     }
   },
   "version": "0.0.0-semantic-release",
-  "contributors": [{
-    "name": "Markus Felten",
-    "email": "markus.felten@gmx.de"
-  }]
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ]
 }

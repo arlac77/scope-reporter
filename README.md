@@ -7,6 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/arlac77/scope-reporter/badges/gpa.svg)](https://codeclimate.com/github/arlac77/scope-reporter)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/scope-reporter/badge.svg)](https://snyk.io/test/github/arlac77/scope-reporter)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/scope-reporter.svg?style=flat-square)](https://github.com/arlac77/scope-reporter/issues)
+[![Stories in Ready](https://badge.waffle.io/arlac77/scope-reporter.svg?label=ready&title=Ready)](http://waffle.io/arlac77/scope-reporter)
 [![Dependency Status](https://david-dm.org/arlac77/scope-reporter.svg)](https://david-dm.org/arlac77/scope-reporter)
 [![devDependency Status](https://david-dm.org/arlac77/scope-reporter/dev-status.svg)](https://david-dm.org/arlac77/scope-reporter#info=devDependencies)
 [![docs](http://inch-ci.org/github/arlac77/scope-reporter.svg?branch=master)](http://inch-ci.org/github/arlac77/scope-reporter)

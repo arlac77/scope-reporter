@@ -14,7 +14,6 @@
 [![downloads](http://img.shields.io/npm/dm/scope-reporter.svg?style=flat-square)](https://npmjs.org/package/scope-reporter)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-
 scope-reporter
 =====
 traks scope identifiers during processing

@@ -18,7 +18,7 @@
     "url": "https://github.com/arlac77/scope-reporter.git"
   },
   "engines": {
-    "node": ">=7.7.1"
+    "node": ">=7.9.0"
   },
   "keywords": [
     "scope",
@@ -66,5 +66,10 @@
       "lcov"
     ],
     "report-dir": "./coverage"
+  },
+  "template": {
+    "repository": {
+      "url": "https://github.com/Kronos-Tools/npm-package-template.git"
+    }
   }
 }

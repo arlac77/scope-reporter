@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/arlac77/scope-reporter#readme",
   "dependencies": {
-    "expression-expander": "5.3.11"
+    "expression-expander": "6.0.0"
   },
   "version": "0.0.0-semantic-release",
   "contributors": [

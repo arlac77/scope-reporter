@@ -1,8 +1,12 @@
-/* jslint node: true, esnext: true */
-'use strict';
+import pkg from './package.json';
 
 export default {
-  format: 'cjs',
   plugins: [],
-  external: ['expression-expander']
+  external: ['expression-expander'],
+  input: pkg.module,
+
+  output: {
+    format: 'cjs',
+    file: pkg.main
+  }
 };

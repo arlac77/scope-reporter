@@ -65,5 +65,8 @@
     "repository": {
       "url": "https://github.com/Kronos-Tools/npm-package-template.git"
     }
+  },
+  "xo": {
+    "space": true
   }
 }

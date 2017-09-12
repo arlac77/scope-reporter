@@ -20,7 +20,10 @@
   "engines": {
     "node": ">=8.4.0"
   },
-  "keywords": ["scope", "tracking"],
+  "keywords": [
+    "scope",
+    "tracking"
+  ],
   "release": {
     "verifyRelease": "cracks"
   },
@@ -50,8 +53,12 @@
     }
   ],
   "nyc": {
-    "include": ["dist/**/*.js"],
-    "reporter": ["lcov"],
+    "include": [
+      "dist/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
     "report-dir": "./coverage"
   },
   "template": {

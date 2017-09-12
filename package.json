@@ -1,11 +1,11 @@
 {
   "name": "scope-reporter",
   "description": "traks scope identifiers during processing",
-  "main": "dist/ScopeReporter.js",
-  "module": "src/ScopeReporter.js",
+  "main": "dist/scope-reporter.js",
+  "module": "src/scope-reporter.js",
   "scripts": {
     "cover": "nyc npm test",
-    "test": "mocha tests/*_test.js",
+    "test": "mocha tests/*-test.js",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "pretest": "rollup -c",
@@ -20,10 +20,7 @@
   "engines": {
     "node": ">=8.4.0"
   },
-  "keywords": [
-    "scope",
-    "tracking"
-  ],
+  "keywords": ["scope", "tracking"],
   "release": {
     "verifyRelease": "cracks"
   },
@@ -53,12 +50,8 @@
     }
   ],
   "nyc": {
-    "include": [
-      "dist/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
+    "include": ["dist/**/*.js"],
+    "reporter": ["lcov"],
     "report-dir": "./coverage"
   },
   "template": {

@@ -18,7 +18,7 @@
     "url": "git+https://github.com/arlac77/scope-reporter.git"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.5.0"
   },
   "keywords": [
     "scope",

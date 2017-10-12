@@ -1,50 +1,41 @@
-/* global describe, it, xit */
-/* jslint node: true, esnext: true */
+import {
+  createScopeDefinition,
+  createScopeDefinitions
+} from '../src/scope-reporter';
+import test from 'ava';
 
-'use strict';
+test('scope single attributes present', t => {
+  const fileScopeDef = createScopeDefinition(
+    'file',
+    {
+      name: {}
+    },
+    'file: ${name}'
+  );
 
-const chai = require('chai'),
-  assert = chai.assert,
-  expect = chai.expect,
-  should = chai.should(),
-  sc = require('../dist/scope-reporter.js');
+  t.is(fileScopeDef.name, 'file');
+  t.is(fileScopeDef.format, 'file: ${name}');
+  t.deepEqual(fileScopeDef.properties, {
+    name: {}
+  });
 
-describe('scope', function() {
-  describe('create single', function() {
-    it('attributes present', function() {
-      const fileScopeDef = sc.createScopeDefinition(
-        'file',
-        {
-          name: {}
-        },
-        'file: ${name}'
-      );
+  t.is(fileScopeDef.toString(), 'file');
+});
 
-      assert.equal(fileScopeDef.name, 'file');
-      assert.equal(fileScopeDef.format, 'file: ${name}');
-      assert.deepEqual(fileScopeDef.properties, {
+test('scope multiple attributes present', t => {
+  const scopeDefs = createScopeDefinitions({
+    file: {
+      properties: {
         name: {}
-      });
-
-      assert.equal(fileScopeDef.toString(), 'file');
-    });
-  });
-
-  describe('create multiple', function() {
-    const scopeDefs = sc.createScopeDefinitions({
-      file: {
-        properties: {
-          name: {}
-        },
-        format: 'file: ${name}'
       },
-      line: {
-        properties: {
-          number: {}
-        },
-        format: 'line: ${number}'
-      }
-    });
-    it('present', () => assert.lengthOf(scopeDefs, 2));
+      format: 'file: ${name}'
+    },
+    line: {
+      properties: {
+        number: {}
+      },
+      format: 'line: ${number}'
+    }
   });
+  t.is(scopeDefs.length, 2);
 });

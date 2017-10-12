@@ -1,13 +1,5 @@
-/* global describe, it, xit, console */
-/* jslint node: true, esnext: true */
-
-'use strict';
-
-const chai = require('chai'),
-  assert = chai.assert,
-  expect = chai.expect,
-  should = chai.should(),
-  sc = require('../dist/scope-reporter.js');
+import { createReporter } from '../src/scope-reporter';
+import test from 'ava';
 
 const scopes = {
   file: {
@@ -31,164 +23,148 @@ const scopes = {
   }
 };
 
-describe('reporter', function() {
-  describe('create', function() {
-    const reporter = sc.createReporter(scopes);
+test('reporter create scope stack empty', t => {
+  const reporter = createReporter(scopes);
+  t.is(reporter.scopeStack.length, 0);
+  t.is(reporter.currentScope, undefined);
+});
 
-    it('scope stack empty', function() {
-      assert.lengthOf(reporter.scopeStack, 0);
-      assert.isUndefined(reporter.currentScope);
-    });
+test('reporter common scope definitions present', t => {
+  const reporter = createReporter(scopes);
+  t.is(reporter.scopeDefinitions.error.name, 'error');
+  t.is(reporter.scopeDefinitions.exception.name, 'exception');
+});
 
-    it('common scope definitions present', function() {
-      assert.equal(reporter.scopeDefinitions.error.name, 'error');
-      assert.equal(reporter.scopeDefinitions.exception.name, 'exception');
-    });
+test('reporter common scope definitions file present', t => {
+  const reporter = createReporter(scopes);
+  t.is(reporter.scopeDefinitions.file.name, 'file');
+});
 
-    it('scope definitions present', function() {
-      assert.equal(reporter.scopeDefinitions.file.name, 'file');
-    });
+test('reporter add scope definitions', t => {
+  const reporter = createReporter(scopes);
+
+  reporter.addScopeDefinitions({
+    newScope: {
+      properties: {
+        newScopeProp: {}
+      },
+      format: ''
+    }
   });
+  t.is(reporter.scopeDefinitions.newScope.name, 'newScope');
+});
 
-  describe('add scope definitions', function() {
-    const reporter = sc.createReporter(scopes);
+test('reporter enter/leave scopes', t => {
+  const reporter = createReporter(scopes);
 
-    it('scope definitions present', function() {
-      reporter.addScopeDefinitions({
-        newScope: {
-          properties: {
-            newScopeProp: {}
-          },
-          format: ''
+  const newScope = reporter.enterScope('file', 'aFile');
+  t.is(reporter.currentScope, newScope);
+  t.is(reporter.scopeStack.length, 1);
+  t.is(reporter.currentScope.values.name, 'aFile');
+  t.is(reporter.scope('file'), reporter.currentScope);
+});
+
+test('reporter enter scope', t => {
+  const reporter = createReporter(scopes);
+
+  const newScope = reporter.enterScope('file', 'aFile');
+  t.is(reporter.currentScope, newScope);
+  t.is(reporter.scopeStack.length, 1);
+  t.is(reporter.currentScope.values.name, 'aFile');
+  t.is(reporter.scope('file'), reporter.currentScope);
+
+  const oldScope = reporter.leaveScope();
+  t.is(reporter.scopeStack.length, 0);
+  t.is(reporter.currentScope, undefined);
+  t.is(oldScope.name, 'file');
+});
+
+test('reporter clear scope', t => {
+  const reporter = createReporter(scopes);
+  const newScope = reporter.enterScope('file', 'aFile');
+  reporter.clearScopes();
+  t.is(reporter.scopeStack.length, 0);
+  t.is(reporter.currentScope, undefined);
+});
+
+test('reporter find scopes', t => {
+  const reporter = createReporter(scopes);
+  reporter.enterScope('file', 'aFile');
+
+  t.is(reporter.scope('file').name, 'file');
+
+  t.is(reporter.scope('no_present'), undefined);
+});
+
+test('reporter enter/leave scopes guarded', t => {
+  const reporter = createReporter(scopes);
+  reporter.enterScope('file', {
+    name: 'aFile'
+  });
+  reporter.leaveScope('file');
+  t.is(reporter.scopeStack.length, 0);
+  t.is(reporter.currentScope, undefined);
+});
+
+test('reporter enter/leave scopes guarded - leave wrong scope should throw', t => {
+  const reporter = createReporter(scopes);
+  reporter.enterScope('file', {
+    name: 'aFile'
+  });
+  try {
+    reporter.leaveScope('other');
+    t.is(reporter.scopeStack.length, 1);
+  } catch (e) {
+    t.is(
+      e.message,
+      'Leaving scope: expected to be in other but was in file scope'
+    );
+  }
+});
+
+test('reporter enter/leave scopes guarded - toString toJSON', t => {
+  const reporter = createReporter(scopes);
+  reporter.enterScope('file', 'aFile');
+  reporter.enterScope('error', 'something went wrong');
+  //assert.include(reporter.toString(), 'aFile');
+  //console.log(JSON.stringify(reporter.toJSON()));
+
+  t.deepEqual(reporter.toJSON(), {
+    scopes: [
+      {
+        name: 'file',
+        properties: {
+          name: 'aFile'
         }
-      });
-      assert.equal(reporter.scopeDefinitions.newScope.name, 'newScope');
-    });
-  });
-
-  describe('enter/leave scopes', function() {
-    const reporter = sc.createReporter(scopes);
-
-    it('default undefined scope', function() {
-      assert.isUndefined(reporter.currentScope);
-    });
-
-    it('enter scope single scalar', function() {
-      const reporter = sc.createReporter(scopes);
-      const newScope = reporter.enterScope('file', 'aFile');
-      assert.equal(reporter.currentScope, newScope);
-      assert.lengthOf(reporter.scopeStack, 1);
-      assert.equal(reporter.currentScope.values.name, 'aFile');
-      assert.equal(reporter.scope('file'), reporter.currentScope);
-    });
-
-    it('enter scope', function() {
-      const newScope = reporter.enterScope('file', {
-        name: 'aFile'
-      });
-      assert.equal(reporter.currentScope, newScope);
-      assert.lengthOf(reporter.scopeStack, 1);
-      assert.equal(reporter.currentScope.values.name, 'aFile');
-      assert.equal(reporter.scope('file'), reporter.currentScope);
-    });
-
-    it('leave scope again', function() {
-      const oldScope = reporter.leaveScope();
-      assert.lengthOf(reporter.scopeStack, 0);
-      assert.isUndefined(reporter.currentScope);
-      assert.equal(oldScope.name, 'file');
-    });
-
-    it('clear scope', function() {
-      const reporter = sc.createReporter(scopes);
-      const newScope = reporter.enterScope('file', 'aFile');
-      reporter.clearScopes();
-      assert.lengthOf(reporter.scopeStack, 0);
-      assert.isUndefined(reporter.currentScope);
-    });
-  });
-
-  describe('find scopes', function() {
-    const reporter = sc.createReporter(scopes);
-    reporter.enterScope('file', 'aFile');
-
-    it('with name', function() {
-      assert.equal(reporter.scope('file').name, 'file');
-    });
-
-    it('with invalid name', function() {
-      assert.isUndefined(reporter.scope('no_present'));
-    });
-  });
-
-  describe('enter/leave scopes guarded', function() {
-    it('leave scope again', function() {
-      const reporter = sc.createReporter(scopes);
-      reporter.enterScope('file', {
-        name: 'aFile'
-      });
-      reporter.leaveScope('file');
-      assert.lengthOf(reporter.scopeStack, 0);
-      assert.isUndefined(reporter.currentScope);
-    });
-
-    it('leave wrong scope should throw', function() {
-      const reporter = sc.createReporter(scopes);
-      reporter.enterScope('file', {
-        name: 'aFile'
-      });
-      try {
-        reporter.leaveScope('other');
-        assert.lengthOf(reporter.scopeStack, 1);
-      } catch (e) {
-        assert.equal(
-          e,
-          'Error: Leaving scope: expected to be in other but was in file scope'
-        );
+      },
+      {
+        name: 'error',
+        properties: {
+          error: 'something went wrong'
+        }
       }
-    });
+    ]
   });
+});
 
-  describe('toString toJSON', function() {
-    const reporter = sc.createReporter(scopes);
-    reporter.enterScope('file', 'aFile');
-    reporter.enterScope('error', 'something went wrong');
-    assert.include(reporter.toString(), 'aFile');
+/*
+test('reporter enter/leave scopes guarded - set adapter late', t => {
+  function reporterWithAssertions(severity) {
+    const r = createReporter(scopes);
+    r.adater = function(sr) {
+      console.log('******** ');
+    };
+    return r;
+  }
 
-    //console.log(JSON.stringify(reporter.toJSON()));
+  const reporter = reporterWithAssertions('trace');
+  reporter.trace('some error', 'file', 'aFile');
+});
 
-    assert.deepEqual(reporter.toJSON(), {
-      scopes: [
-        {
-          name: 'file',
-          properties: {
-            name: 'aFile'
-          }
-        },
-        {
-          name: 'error',
-          properties: {
-            error: 'something went wrong'
-          }
-        }
-      ]
-    });
-  });
+
 
   describe('report', function() {
     describe('set adapter late', function() {
-      function reporterWithAssertions(severity) {
-        const r = sc.createReporter(scopes);
-        r.adater = function(sr) {
-          console.log('******** ');
-        };
-        return r;
-      }
-
-      it('trace', function() {
-        const reporter = reporterWithAssertions('trace');
-        reporter.trace('some error', 'file', 'aFile');
-      });
     });
 
     describe('console adaptor', function() {
@@ -333,3 +309,5 @@ describe('reporter', function() {
     });
   });
 });
+
+*/

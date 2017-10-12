@@ -1,20 +1,22 @@
-import babel from 'rollup-plugin-babel';
-import multiEntry from 'rollup-plugin-multi-entry';
+const external = ['ava'];
 
-export default {
-  input: 'tests/**/*-test.js',
-  output: {
-    file: 'build/bundle-test.js',
-    format: 'cjs',
-    sourcemap: true
+export default [
+  {
+    input: 'tests/reporter-test.js',
+    output: {
+      file: 'build/reporter-test.js',
+      format: 'cjs',
+      sourcemap: true
+    },
+    external
   },
-  external: ['ava'],
-  plugins: [
-    babel({
-      babelrc: false,
-      presets: ['stage-3'],
-      exclude: 'node_modules/**'
-    }),
-    multiEntry()
-  ]
-};
+  {
+    input: 'tests/scopedef-test.js',
+    output: {
+      file: 'build/scopedef-test.js',
+      format: 'cjs',
+      sourcemap: true
+    },
+    external
+  }
+];

@@ -1,5 +1,6 @@
 {
   "name": "scope-reporter",
+  "version": "0.0.0-semantic-release",
   "description": "traks scope identifiers during processing",
   "main": "dist/scope-reporter.js",
   "module": "src/scope-reporter.js",
@@ -33,6 +34,7 @@
     "jsdoc-to-markdown": "^3.0.1",
     "markdown-doctest": "^0.9.1",
     "rollup": "^0.51.1",
+    "rollup-plugin-multi-entry": "^2.0.2",
     "nyc": "^11.3.0",
     "jsdoc-babel": "^0.3.0",
     "ava": "^0.23.0",
@@ -46,7 +48,6 @@
   "dependencies": {
     "expression-expander": "6.0.0"
   },
-  "version": "0.0.0-semantic-release",
   "contributors": [
     {
       "name": "Markus Felten",
@@ -74,9 +75,7 @@
     "files": [
       "build/*-test.js"
     ],
-    "presets": [
-      "stage-3"
-    ],
+    "presets": [],
     "require": [
       "babel-register"
     ]

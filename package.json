@@ -76,7 +76,6 @@
       "build/*-test.js"
     ],
     "presets": [
-      null
     ],
     "require": [
       "babel-register"

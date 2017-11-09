@@ -33,7 +33,7 @@
     "semantic-release": "^9.1.0",
     "jsdoc-to-markdown": "^3.0.1",
     "markdown-doctest": "^0.9.1",
-    "rollup": "^0.51.1",
+    "rollup": "^0.51.2",
     "rollup-plugin-multi-entry": "^2.0.2",
     "nyc": "^11.3.0",
     "jsdoc-babel": "^0.3.0",
@@ -75,7 +75,8 @@
     "files": [
       "build/*-test.js"
     ],
-    "presets": [],
+    "presets": [
+    ],
     "require": [
       "babel-register"
     ]

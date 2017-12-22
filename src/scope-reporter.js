@@ -29,7 +29,7 @@ const rootScopeDefinition = {
 
 /**
  * Creates several scope definition from a given json hash.
- * @param scopes
+ * @param {Object} scopes
  */
 export function createScopeDefinitions(scopes) {
   const createdScopes = [];
@@ -46,8 +46,8 @@ export function createScopeDefinitions(scopes) {
 
 /**
  * Creates a scope definition
- * @param name the scope definition name
- * @param properties describung properties for the scope
+ * @param {string} name the scope definition name
+ * @param {Object} properties describung properties for the scope
  * @param format format string for the scope properties
  */
 export function createScopeDefinition(name, properties, format) {
@@ -102,7 +102,7 @@ const commonScopes = {
 
 /**
  * Creates a reporting adaptor for console api.
- * @param aConsole console object may be undefined for the default console
+ * @param {Object} aConsole console object may be undefined for the default console
  * @return the newly created adaptor
  */
 export function createConsoleAdapter(aConsole = console) {
@@ -156,7 +156,7 @@ export function nullAdapter() {}
 
 /**
  * Creates a new scope reporter.
- * @param scopeDefinitions
+ * @param {Object} scopeDefinitionsRaw
  * @param reportAdapter
  * @return {ScopeReporter} newly created scope reporter
  */
@@ -181,16 +181,19 @@ export function createReporter(
     addScopeDefs(scopeDefinitionsRaw);
   }
 
-  const root = {
+  /**
+   * methods of all scopes
+   */
+  const rootObject = {
     toString() {
       return scopeStack
         .map(scope => `${scope.name}: ${scope.valueString()}`)
         .join(',');
     },
     /**
-       * Delivers the json representation of the scope-reporter.
-       * @return object with scopes array
-       */
+     * Delivers the json representation of the scope-reporter.
+     * @return {Object} with scopes array
+     */
     toJSON() {
       return {
         scopes: scopeStack.map(s => s.toJSON())
@@ -198,18 +201,18 @@ export function createReporter(
     },
 
     /**
-       * Add additional scope definitions
-       * @param defs new scope defintions to be added to the already present ones
-       */
+     * Add additional scope definitions
+     * @param defs new scope defintions to be added to the already present ones
+     */
     addScopeDefinitions(defs) {
       addScopeDefs(defs);
     },
 
     /**
-       * Deliver a scope for a given scope name.
-       * @param name {string} name of the scope
-       * @return {object} for the given name
-       */
+     * Deliver a scope for a given scope name.
+     * @param {string} name name of the scope
+     * @return {Object} for the given name
+     */
     scope(name) {
       for (const s of scopeStack) {
         if (s.name === name) return s;
@@ -218,11 +221,11 @@ export function createReporter(
     },
 
     /**
-       * Enter a new scope by pushing the scope to the scope stack.
-       * @param scope name of the scope to be entered
-       * @param propertiesOrScalar the properties of the new scope may ge a scalar if there is only one possible property
-       * @return newly created scope with the assigned properties.
-       */
+     * Enter a new scope by pushing the scope to the scope stack.
+     * @param scope name of the scope to be entered
+     * @param propertiesOrScalar the properties of the new scope may ge a scalar if there is only one possible property
+     * @return newly created scope with the assigned properties.
+     */
     enterScope(scope, propertiesOrScalar) {
       const sd = scopeDefinitions[scope];
 
@@ -250,17 +253,18 @@ export function createReporter(
     },
 
     /**
-       * Leaves the last entered scope.
-       * @param expectedScope the expected current scope may be undefined
-       * @throws if expectedScope is not the current scope
-       * @return the old leaved scope
-       */
+     * Leaves the last entered scope.
+     * @param expectedScope the expected current scope may be undefined
+     * @throws if expectedScope is not the current scope
+     * @return the old leaved scope
+     */
     leaveScope(expectedScope) {
       if (expectedScope !== undefined) {
         if (this.currentScope.name !== expectedScope) {
           throw new Error(
-            `Leaving scope: expected to be in ${expectedScope} but was in ${this
-              .currentScope.name} scope`
+            `Leaving scope: expected to be in ${expectedScope} but was in ${
+              this.currentScope.name
+            } scope`
           );
         }
       }
@@ -269,8 +273,8 @@ export function createReporter(
     },
 
     /**
-       * Clears the scope stack
-       */
+     * Clears the scope stack
+     */
     clearScopes() {
       while (scopeStack.length) {
         scopeStack.pop();
@@ -316,7 +320,7 @@ export function createReporter(
     }
   };
 
-  return Object.create(root, {
+  return Object.create(rootObject, {
     /**
      * Delivers the scope definitions
      * @return scope defintions

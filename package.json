@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "cracks": "^3.1.2",
-    "semantic-release": "^15.4.0",
+    "semantic-release": "^15.4.1",
     "markdown-doctest": "^0.9.1",
     "rollup": "^0.58.2",
     "rollup-plugin-multi-entry": "^2.0.2",

@@ -1,6 +1,9 @@
 {
   "name": "scope-reporter",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/scope-reporter.js",
   "module": "src/scope-reporter.js",
   "description": "traks scope identifiers during processing",

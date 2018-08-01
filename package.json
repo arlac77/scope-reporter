@@ -35,9 +35,9 @@
   },
   "devDependencies": {
     "cracks": "^3.1.2",
-    "semantic-release": "^15.9.2",
+    "semantic-release": "^15.9.3",
     "markdown-doctest": "^0.9.1",
-    "rollup": "^0.63.4",
+    "rollup": "^0.63.5",
     "rollup-plugin-multi-entry": "^2.0.2",
     "nyc": "^13.0.1",
     "ava": "^0.25.0",

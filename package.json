@@ -28,7 +28,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "expression-expander": "6.2.0"
+    "expression-expander": "7.0.0"
   },
   "devDependencies": {
     "ava": "^1.0.1",

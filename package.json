@@ -4,8 +4,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/scope-reporter.js",
-  "module": "src/scope-reporter.js",
+  "main": "src/scope-reporter.mjs",
+  "module": "src/scope-reporter.mjs",
   "description": "traks scope identifiers during processing",
   "keywords": [
     "scope",
@@ -20,10 +20,9 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "c8 --temp-directory build/coverage ava && c8 report -r lcov --temp-directory build/coverage",
-    "docs": "documentation readme src/scope-reporter.js --section=API",
-    "lint": "documentation lint src/scope-reporter.js",
-    "posttest": "markdown-doctest && npm run prepare",
-    "pretest": "rollup -c tests/rollup.config.js",
+    "docs": "documentation readme src/scope-reporter.mjs --section=API",
+    "lint": "documentation lint src/scope-reporter.mjs",
+    "posttest": "markdown-doctest",
     "test": "ava"
   },
   "dependencies": {
@@ -49,7 +48,7 @@
     "url": "https://github.com/arlac77/scope-reporter/issues"
   },
   "homepage": "https://github.com/arlac77/scope-reporter#readme",
-  "release": {
+  "xrelease": {
     "verifyRelease": "cracks"
   },
   "ava": {

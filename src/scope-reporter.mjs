@@ -1,5 +1,3 @@
-import { expander } from "expression-expander";
-
 const rootScopeDefinition = {
   toString() {
     return this.name;

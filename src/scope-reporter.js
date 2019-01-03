@@ -1,5 +1,4 @@
-import { expander } from 'expression-expander';
-const util = require('util');
+import { expander } from "expression-expander";
 
 const rootScopeDefinition = {
   toString() {
@@ -21,7 +20,7 @@ const rootScopeDefinition = {
       .map(function(key) {
         return values[key];
       })
-      .join(' ');
+      .join(" ");
   },
 
   values: {}
@@ -72,31 +71,31 @@ const commonScopes = {
   error: {
     properties: {
       error: {
-        type: 'string'
+        type: "string"
       }
     },
-    format: '${error}'
+    format: "${error}"
   },
   exception: {
     /* used for exceptions */
     properties: {
       exception: {
-        type: 'Error'
+        type: "Error"
       }
     },
-    format: '${exception}'
+    format: "${exception}"
   },
   severity: {
     /* used for logging entries */
     properties: {
       severity: {
-        type: 'string'
+        type: "string"
       },
       message: {
-        type: 'string'
+        type: "string"
       }
     },
-    format: '${message}'
+    format: "${message}"
   }
 };
 
@@ -109,7 +108,7 @@ export function createConsoleAdapter(aConsole = console) {
   return function(reporter) {
     const message = reporter.scopeStack
       .map(scope => `${scope.name}: ${scope.valueString()}`)
-      .join(',');
+      .join(",");
     aConsole.log(message);
   };
 }
@@ -123,24 +122,24 @@ export function createLoggingAdapter(logger) {
   return function loggerReport(reporter) {
     const message = reporter.scopeStack
       .map(scope => `${scope.name}: ${scope.valueString()}`)
-      .join(',');
+      .join(",");
 
-    const ss = reporter.scope('severity');
+    const ss = reporter.scope("severity");
 
     switch (ss.values.severity) {
-      case 'trace':
+      case "trace":
         logger.trace(message);
         break;
-      case 'debug':
+      case "debug":
         logger.debug(message);
         break;
-      case 'info':
+      case "info":
         logger.info(message);
         break;
-      case 'warn':
+      case "warn":
         logger.warn(message);
         break;
-      case 'fatal':
+      case "fatal":
         if (logger.fatal) {
           logger.fatal(message);
         }
@@ -168,7 +167,7 @@ export function createReporter(
   const scopeStack = [];
 
   function addScopeDefs(defs) {
-    if (!util.isArray(defs)) {
+    if (!Array.isArray(defs)) {
       defs = createScopeDefinitions(defs);
     }
 
@@ -188,7 +187,7 @@ export function createReporter(
     toString() {
       return scopeStack
         .map(scope => `${scope.name}: ${scope.valueString()}`)
-        .join(',');
+        .join(",");
     },
     /**
      * Delivers the json representation of the scope-reporter.
@@ -230,7 +229,7 @@ export function createReporter(
       const sd = scopeDefinitions[scope];
 
       if (
-        typeof propertiesOrScalar === 'string' ||
+        typeof propertiesOrScalar === "string" ||
         propertiesOrScalar instanceof String
       ) {
         const keys = Object.keys(sd.properties);
@@ -286,35 +285,35 @@ export function createReporter(
         this.enterScope(scope, properties);
       }
 
-      this.enterScope('severity', {
+      this.enterScope("severity", {
         severity: severity,
         message: message
       });
       reportAdapter(this);
-      this.leaveScope('severity');
+      this.leaveScope("severity");
       this.leaveScope(scope);
     },
 
     trace(message, scope, properties) {
-      this.reportWithSeverity('trace', message, scope, properties);
+      this.reportWithSeverity("trace", message, scope, properties);
     },
     debug(message, scope, properties) {
-      this.reportWithSeverity('debug', message, scope, properties);
+      this.reportWithSeverity("debug", message, scope, properties);
     },
     info(message, scope, properties) {
-      this.reportWithSeverity('info', message, scope, properties);
+      this.reportWithSeverity("info", message, scope, properties);
     },
     warn(message, scope, properties) {
-      this.reportWithSeverity('warn', message, scope, properties);
+      this.reportWithSeverity("warn", message, scope, properties);
     },
     error(message, scope, properties) {
-      this.reportWithSeverity('error', message, scope, properties);
+      this.reportWithSeverity("error", message, scope, properties);
     },
     fatal(message, scope, properties) {
-      this.reportWithSeverity('fatal', message, scope, properties);
+      this.reportWithSeverity("fatal", message, scope, properties);
     },
     exception(e) {
-      this.reportWithSeverity('fatal', undefined, 'exception', {
+      this.reportWithSeverity("fatal", undefined, "exception", {
         exception: e
       });
     }

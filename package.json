@@ -70,5 +70,6 @@
   },
   "xrelease": {
     "verifyRelease": "cracks"
-  }
+  },
+  "sideEffects": false
 }

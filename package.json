@@ -1,4 +1,7 @@
 {
+  "xrelease": {
+    "verifyRelease": "cracks"
+  },
   "name": "scope-reporter",
   "version": "0.0.0-semantic-release",
   "publishConfig": {
@@ -68,8 +71,5 @@
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
     }
-  },
-  "xrelease": {
-    "verifyRelease": "cracks"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "name": "scope-reporter",
+  "description": "traks scope identifiers during processing",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}

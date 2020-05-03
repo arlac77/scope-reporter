@@ -30,7 +30,7 @@
     "lint": "documentation lint src/scope-reporter.mjs"
   },
   "dependencies": {
-    "expression-expander": "7.0.4"
+    "expression-expander": "7.0.5"
   },
   "devDependencies": {
     "ava": "^3.8.1",

@@ -8,8 +8,7 @@
   "type": "module",
   "main": "src/scope-reporter.mjs",
   "exports": {
-    ".": "src/scope-reporter.mjs",
-    "./": "./"
+    ".": "src/scope-reporter.mjs"
   },
   "description": "traks scope identifiers during processing",
   "keywords": [

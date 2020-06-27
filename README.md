@@ -96,7 +96,7 @@ Creates a new scope reporter.
 ### Parameters
 
 -   `scopeDefinitionsRaw` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
--   `reportAdapter`  
+-   `reportAdapter`   (optional, default `createConsoleAdapter()`)
 
 Returns **ScopeReporter** newly created scope reporter
 

@@ -3,7 +3,7 @@
 [![minified size](https://badgen.net/bundlephobia/min/scope-reporter)](https://bundlephobia.com/result?p=scope-reporter)
 [![downloads](http://img.shields.io/npm/dm/scope-reporter.svg?style=flat-square)](https://npmjs.org/package/scope-reporter)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/scope-reporter.svg?style=flat-square)](https://github.com/arlac77/scope-reporter/issues)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fscope-reporter%2Fbadge&style=flat)](https://actions-badge.atrox.dev/arlac77/scope-reporter/goto)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fscope-reporter%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/scope-reporter/goto)
 [![Styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/scope-reporter/badge.svg)](https://snyk.io/test/github/arlac77/scope-reporter)
@@ -19,31 +19,31 @@ traks scope identifiers during processing
 
 ### Table of Contents
 
--   [createScopeDefinitions](#createscopedefinitions)
-    -   [Parameters](#parameters)
--   [createScopeDefinition](#createscopedefinition)
-    -   [Parameters](#parameters-1)
--   [commonScopes](#commonscopes)
--   [createConsoleAdapter](#createconsoleadapter)
-    -   [Parameters](#parameters-2)
--   [createLoggingAdapter](#createloggingadapter)
-    -   [Parameters](#parameters-3)
--   [createReporter](#createreporter)
-    -   [Parameters](#parameters-4)
--   [rootObject](#rootobject)
-    -   [toJSON](#tojson)
-    -   [addScopeDefinitions](#addscopedefinitions)
-        -   [Parameters](#parameters-5)
-    -   [scope](#scope)
-        -   [Parameters](#parameters-6)
-    -   [enterScope](#enterscope)
-        -   [Parameters](#parameters-7)
-    -   [leaveScope](#leavescope)
-        -   [Parameters](#parameters-8)
-    -   [clearScopes](#clearscopes)
--   [scopeDefinitions](#scopedefinitions)
--   [scopeStack](#scopestack)
--   [currentScope](#currentscope)
+*   [createScopeDefinitions](#createscopedefinitions)
+    *   [Parameters](#parameters)
+*   [createScopeDefinition](#createscopedefinition)
+    *   [Parameters](#parameters-1)
+*   [commonScopes](#commonscopes)
+*   [createConsoleAdapter](#createconsoleadapter)
+    *   [Parameters](#parameters-2)
+*   [createLoggingAdapter](#createloggingadapter)
+    *   [Parameters](#parameters-3)
+*   [createReporter](#createreporter)
+    *   [Parameters](#parameters-4)
+*   [rootObject](#rootobject)
+    *   [toJSON](#tojson)
+    *   [addScopeDefinitions](#addscopedefinitions)
+        *   [Parameters](#parameters-5)
+    *   [scope](#scope)
+        *   [Parameters](#parameters-6)
+    *   [enterScope](#enterscope)
+        *   [Parameters](#parameters-7)
+    *   [leaveScope](#leavescope)
+        *   [Parameters](#parameters-8)
+    *   [clearScopes](#clearscopes)
+*   [scopeDefinitions](#scopedefinitions)
+*   [scopeStack](#scopestack)
+*   [currentScope](#currentscope)
 
 ## createScopeDefinitions
 
@@ -51,7 +51,7 @@ Creates several scope definition from a given json hash.
 
 ### Parameters
 
--   `scopes` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `scopes` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ## createScopeDefinition
 
@@ -59,9 +59,9 @@ Creates a scope definition
 
 ### Parameters
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the scope definition name
--   `properties` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** describung properties for the scope
--   `format`  format string for the scope properties
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the scope definition name
+*   `properties` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** describung properties for the scope
+*   `format`  format string for the scope properties
 
 ## commonScopes
 
@@ -73,7 +73,7 @@ Creates a reporting adaptor for console api.
 
 ### Parameters
 
--   `aConsole` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** console object may be undefined for the default console (optional, default `console`)
+*   `aConsole` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** console object may be undefined for the default console (optional, default `console`)
 
 Returns **any** the newly created adaptor
 
@@ -83,7 +83,7 @@ Creates a reporting adaptor for logging api.
 
 ### Parameters
 
--   `logger`  target logger
+*   `logger`  target logger
 
 Returns **any** the newly created adaptor
 
@@ -93,8 +93,8 @@ Creates a new scope reporter.
 
 ### Parameters
 
--   `scopeDefinitionsRaw` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
--   `reportAdapter`   (optional, default `createConsoleAdapter()`)
+*   `scopeDefinitionsRaw` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `reportAdapter`   (optional, default `createConsoleAdapter()`)
 
 Returns **ScopeReporter** newly created scope reporter
 
@@ -114,7 +114,7 @@ Add additional scope definitions
 
 #### Parameters
 
--   `defs`  new scope defintions to be added to the already present ones
+*   `defs`  new scope defintions to be added to the already present ones
 
 ### scope
 
@@ -122,7 +122,7 @@ Deliver a scope for a given scope name.
 
 #### Parameters
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the scope
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** name of the scope
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** for the given name
 
@@ -132,8 +132,8 @@ Enter a new scope by pushing the scope to the scope stack.
 
 #### Parameters
 
--   `scope`  name of the scope to be entered
--   `propertiesOrScalar`  the properties of the new scope may ge a scalar if there is only one possible property
+*   `scope`  name of the scope to be entered
+*   `propertiesOrScalar`  the properties of the new scope may ge a scalar if there is only one possible property
 
 Returns **any** newly created scope with the assigned properties.
 
@@ -143,10 +143,11 @@ Leaves the last entered scope.
 
 #### Parameters
 
--   `expectedScope`  the expected current scope may be undefined
+*   `expectedScope`  the expected current scope may be undefined
 
+<!---->
 
--   Throws **any** if expectedScope is not the current scope
+*   Throws **any** if expectedScope is not the current scope
 
 Returns **any** the old leaved scope
 

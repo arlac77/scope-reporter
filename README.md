@@ -2,12 +2,12 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![minified size](https://badgen.net/bundlephobia/min/scope-reporter)](https://bundlephobia.com/result?p=scope-reporter)
 [![downloads](http://img.shields.io/npm/dm/scope-reporter.svg?style=flat-square)](https://npmjs.org/package/scope-reporter)
-[![GitHub Issues](https://img.shields.io/github/issues/arlac77/scope-reporter.svg?style=flat-square)](https://github.com/arlac77/scope-reporter/issues)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fscope-reporter%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/scope-reporter/goto)
+[![GitHub Issues](https://img.shields.io/github/issues/scope-reporter/scope-reporter.svg?style=flat-square)](https://github.com/scope-reporter/scope-reporter/issues)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fscope-reporter%2Fscope-reporter%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/scope-reporter/scope-reporter/goto)
 [![Styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Known Vulnerabilities](https://snyk.io/test/github/arlac77/scope-reporter/badge.svg)](https://snyk.io/test/github/arlac77/scope-reporter)
-[![Coverage Status](https://coveralls.io/repos/arlac77/scope-reporter/badge.svg)](https://coveralls.io/github/arlac77/scope-reporter)
+[![Known Vulnerabilities](https://snyk.io/test/github/scope-reporter/scope-reporter/badge.svg)](https://snyk.io/test/github/scope-reporter/scope-reporter)
+[![Coverage Status](https://coveralls.io/repos/scope-reporter/scope-reporter/badge.svg)](https://coveralls.io/github/scope-reporter/scope-reporter)
 
 # scope-reporter
 

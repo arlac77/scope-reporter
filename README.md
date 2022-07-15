@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/scope-reporter.svg)](https://www.npmjs.com/package/scope-reporter)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![minified size](https://badgen.net/bundlephobia/min/scope-reporter)](https://bundlephobia.com/result?p=scope-reporter)
+[![Open Bundle](https://bundlejs.com/badge-light.svg)](https://bundlejs.com/?q=scope-reporter)
 [![downloads](http://img.shields.io/npm/dm/scope-reporter.svg?style=flat-square)](https://npmjs.org/package/scope-reporter)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/scope-reporter.svg?style=flat-square)](https://github.com/arlac77/scope-reporter/issues)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fscope-reporter%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/scope-reporter/goto)

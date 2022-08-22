@@ -51,7 +51,7 @@ Creates several scope definition from a given json hash.
 
 ### Parameters
 
-*   `scopes` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `scopes` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
 
 ## createScopeDefinition
 
@@ -93,7 +93,7 @@ Creates a new scope reporter.
 
 ### Parameters
 
-*   `scopeDefinitionsRaw` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+*   `scopeDefinitionsRaw` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
 *   `reportAdapter`   (optional, default `createConsoleAdapter()`)
 
 Returns **ScopeReporter** newly created scope reporter

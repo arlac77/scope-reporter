@@ -29,7 +29,7 @@
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "dependencies": {
-    "expression-expander": "7.1.1"
+    "expression-expander": "7.1.2"
   },
   "devDependencies": {
     "ava": "^5.1.0",
